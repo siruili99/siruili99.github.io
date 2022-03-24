@@ -107,6 +107,68 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
@@ -136,7 +198,90 @@
         </header>
 
         <div class="post-content">
-            
+            <h3 id="此文介绍使用git上传项目、更新项目的流程操作"><a href="#此文介绍使用git上传项目、更新项目的流程操作" class="headerlink" title="此文介绍使用git上传项目、更新项目的流程操作"></a>此文介绍使用git上传项目、更新项目的流程操作</h3><h4 id="基于CNDS文章"><a href="#基于CNDS文章" class="headerlink" title="基于CNDS文章"></a><a href="https://blog.csdn.net/bing_bg" target="_blank" rel="noopener">基于CNDS文章</a></h4><p>windows 10系统、以下所有内容均在win10 64位下演示操作</p>
+<h3 id="01-安装-Git"><a href="#01-安装-Git" class="headerlink" title="01.安装 Git"></a>01.安装 Git</h3><p>打开<a href="https://git-scm.com.downloads" target="_blank" rel="noopener">官网</a></p>
+<p><code>https://git-scm.com/downloads</code></p>
+<p>然后我们选择Windows版本下载</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/1.png" alt></p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/2.png" alt></p>
+<p>安装也是一直下一步,完成后可以在开始菜单看到.</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/4.png" alt></p>
+<blockquote>
+<p>Tips: 这个Git Bash相当于Linux中的终端窗口,以后我们用这个东西打开终端.</p>
+</blockquote>
+<p>打开终端输入<code>node -v</code> <code>npm -v</code> 查看是否安装成功</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/3.png" alt></p>
+<h3 id="02-注册邮箱"><a href="#02-注册邮箱" class="headerlink" title="02.注册邮箱"></a>02.注册邮箱</h3><p>在git bash界面输入如下内容即可完成邮箱的注册：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"user.name"</span></span><br></pre></td></tr></table></figure>
+
+<p>（说明：双引号中需要你的用户名）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.email <span class="string">"你的邮箱"</span></span><br></pre></td></tr></table></figure>
+
+<p> （说明： 双引号中需要输入你的有效邮箱）</p>
+<h3 id="03-创建SSHkeys"><a href="#03-创建SSHkeys" class="headerlink" title="03.创建SSHkeys"></a>03.创建<a href="https://baike.baidu.com/item/ssh/10407?fr=aladdin" target="_blank" rel="noopener">SSH</a>keys</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ssh-keygen -t rsa -C <span class="string">"你的邮箱"</span></span><br></pre></td></tr></table></figure>
+
+<p>大概会确认3次，直接确认即可；</p>
+<p>就会在你的<code>C:\Users\33\.ssh</code>产生下面两个文件</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/5.png" alt></p>
+<h3 id="04-链接远程"><a href="#04-链接远程" class="headerlink" title="04.链接远程"></a>04.链接远程</h3><p>首先我们需要注册一个gitee账户，邮箱用你上面用的邮箱：<a href="https://gitee.com/" target="_blank" rel="noopener">点击这里</a></p>
+<p>如果网络可以的话可以操作github，方法大致不差。</p>
+<p>注册完，进入界面，点击我的下面的设置：</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/6.png" alt></p>
+<p>点击ssh公钥：</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/7.png" alt></p>
+<p>就进入下面界面：</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/8.png" alt></p>
+<p>（注意：标题是你自己取得）</p>
+<p>下面你可以用编辑器将本地文件<code>id_rsa.pub</code>打开复制其内容，也可以在git控制台写入下面这句命令：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/9.png" alt></p>
+<p>然后将上面内容复制，粘贴到gitee页面公钥栏里：</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/10.png" alt></p>
+<p>点击确认就可以了</p>
+<h3 id="05-配置idea"><a href="#05-配置idea" class="headerlink" title="05.配置idea"></a>05.配置idea</h3><p>在File-&gt;Settings-&gt;Plugins 里面搜索gitee，点击安装:</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/11.png" alt></p>
+<p>安装完成之后还是在设置界面中点击：<code>Version Control</code></p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/12.png" alt></p>
+<p>在这需要配置git、gitee,如果你的是github就配置github不用配置gitee.</p>
+<p>点击git，选择我们之前安装的git目录下的cmd下的git.exe就可以了</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/13.png" alt></p>
+<p>点击aplay，然后配置gitee：</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/14.png" alt></p>
+<p>注意：点击+然后输入你的账户密码，注意要选择<code>Clone git repositories using ssh</code>点击aplay就可以使用了。</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/15.png" alt></p>
+<p>添加账户成功如上图</p>
+<h3 id="06-上传项目到gitee"><a href="#06-上传项目到gitee" class="headerlink" title="06.上传项目到gitee"></a>06.上传项目到gitee</h3><p>首先新建一个空项目，然后创建本地仓库</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/16.png" alt></p>
+<p>选中你将要上传的文件，然后点击OK</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/17.png" alt></p>
+<p>将项目上传到本地仓库：</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/18.png" alt></p>
+<blockquote>
+<p>Tips: git提交文件颜色</p>
+<p>绿色，已经加入控制暂未提交</p>
+<p>红色，未加入版本控制</p>
+<p>蓝色，加入，已提交，有改动</p>
+<p>白色，加入，已提交，无改动</p>
+<p>灰色：版本控制已忽略文件。</p>
+<p>黄色代表HEAD,</p>
+<p>绿色表示的是你本地分支,</p>
+<p>紫色是远程分支,</p>
+<p>如果你看到一个标志是黄绿蓝, 表示</p>
+<p>当前HEAD和你远程还有你本地,都有这个分支.黄色只是表示HEAD的位置,没其它含意</p>
+<p>如果你看到一个提交只有紫色分支,表示你本地没有这个分支.</p>
+<p>如果你看到一个是紫色和绿色,表示这个提交是远程分支并且你本地也有这个分支.</p>
+<p>如果你看到一个提交只有绿色,表示这只是你本地的分支提交.</p>
+</blockquote>
+<p>现在是添加到本地了，下面分享到gitee网页：</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/19.png" alt></p>
+<p>点击分享：</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/20.png" alt></p>
+<p>点击Share，就完成了上传。</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/21.png" alt></p>
+<p>上传成功后idea会提示你success（如上图），即可Pull、Push代码，进入gitee网页版点击仓库也会发现项目上传成功（如下图）</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/22.png" alt></p>
+
         </div>
 
         
