@@ -211,13 +211,15 @@
 </blockquote>
 <p>打开终端输入<code>node -v</code> <code>npm -v</code> 查看是否安装成功</p>
 <p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/3.png" alt></p>
-<h3 id="02-注册邮箱"><a href="#02-注册邮箱" class="headerlink" title="02.注册邮箱"></a>02.注册邮箱</h3><p>在git bash界面输入如下内容即可完成邮箱的注册：</p>
+<h3 id="02-本地配置"><a href="#02-本地配置" class="headerlink" title="02.本地配置"></a>02.本地配置</h3><p>在git bash界面输入如下内容即可完成邮箱的注册：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"user.name"</span></span><br></pre></td></tr></table></figure>
 
 <p>（说明：双引号中需要你的用户名）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.email <span class="string">"你的邮箱"</span></span><br></pre></td></tr></table></figure>
 
 <p> （说明： 双引号中需要输入你的有效邮箱）</p>
+<p>设置完成后，没有报错信息，即为设置成功。也可以再输入指令<code>git config --list</code> 查看配置信息，检查是否配置成功。如下图：</p>
+<p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/28.png" alt></p>
 <h3 id="03-创建SSHkeys"><a href="#03-创建SSHkeys" class="headerlink" title="03.创建SSHkeys"></a>03.创建<a href="https://baike.baidu.com/item/ssh/10407?fr=aladdin" target="_blank" rel="noopener">SSH</a>keys</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ssh-keygen -t rsa -C <span class="string">"你的邮箱"</span></span><br></pre></td></tr></table></figure>
 
 <p>大概会确认3次，直接确认即可；</p>
@@ -231,7 +233,7 @@
 <p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/7.png" alt></p>
 <p>就进入下面界面：</p>
 <p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/8.png" alt></p>
-<p>（注意：标题是你自己取得）</p>
+<p>（注意：标题是你自定义的）</p>
 <p>下面你可以用编辑器将本地文件<code>id_rsa.pub</code>打开复制其内容，也可以在git控制台写入下面这句命令：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
 
@@ -239,12 +241,12 @@
 <p>然后将上面内容复制，粘贴到gitee页面公钥栏里：</p>
 <p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/10.png" alt></p>
 <p>点击确认就可以了</p>
-<h3 id="05-配置idea"><a href="#05-配置idea" class="headerlink" title="05.配置idea"></a>05.配置idea</h3><p>在File-&gt;Settings-&gt;Plugins 里面搜索gitee，点击安装:</p>
+<h3 id="05-配置idea"><a href="#05-配置idea" class="headerlink" title="05.配置idea"></a>05.配置idea</h3><p>在idea里找到File-&gt;Settings-&gt;Plugins 里面搜索gitee，点击安装:</p>
 <p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/11.png" alt></p>
 <p>安装完成之后还是在设置界面中点击：<code>Version Control</code></p>
 <p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/12.png" alt></p>
 <p>在这需要配置git、gitee,如果你的是github就配置github不用配置gitee.</p>
-<p>点击git，选择我们之前安装的git目录下的bin下的git.exe就可以了</p>
+<p>点击git，选择我们之前安装git目录下的bin下的git.exe就可以了</p>
 <p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/13.png" alt></p>
 <p>点击aplay，然后配置gitee：</p>
 <p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/14.png" alt></p>
@@ -273,13 +275,13 @@
 <p>如果你看到一个是紫色和绿色,表示这个提交是远程分支并且你本地也有这个分支.</p>
 <p>如果你看到一个提交只有绿色,表示这只是你本地的分支提交.</p>
 </blockquote>
-<p>现在是添加到本地了，下面分享到gitee网页：</p>
+<p>现在是添加到本地了，下面分享到gitee上：</p>
 <p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/19.png" alt></p>
-<p>点击分享：</p>
+<p>点击share，就完成了上传。</p>
 <p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/20.png" alt></p>
-<p>点击Share，就完成了上传。</p>
+<p>上传成功后idea会提示你success（如下），即可Pull、Push代码。</p>
 <p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/21.png" alt></p>
-<p>上传成功后idea会提示你success（如上图），即可Pull、Push代码，进入gitee网页版点击仓库也会发现项目上传成功（如下图）</p>
+<p>进入gitee网页版点击仓库也会发现项目上传成功（如下图）</p>
 <p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/22.png" alt></p>
 <h3 id="07-更新项目"><a href="#07-更新项目" class="headerlink" title="07.更新项目"></a>07.更新项目</h3><p>我们在上传后代码改动他会显示蓝色，代表可以更新上传，创建新的文件时，他会提示你要不要加入仓库，根据你的需要，如果你需要上传的话就添加，如果不需要就不添加，要更新的时候，使用Ctrl+K：</p>
 <p><img src="/2022/03/23/idea%E9%85%8D%E7%BD%AEgitee%E3%80%81%E4%B8%8A%E4%BC%A0%E9%A1%B9%E7%9B%AE%E3%80%81%E6%9B%B4%E6%96%B0%E9%A1%B9%E7%9B%AE/23.png" alt></p>
